@@ -1,24 +1,17 @@
 package net.serenitybdd.screenplay.webtests.pages;
 
-import net.serenitybdd.screenplay.targets.Target;
-import net.serenitybdd.screenplay.webtests.model.Category;
-import net.serenitybdd.screenplay.webtests.model.SubCategory;
-import org.openqa.selenium.By;
+import net.serenitybdd.core.pages.PageObject;
 
-public class JLNavigationBar {
-    public static Target category(Category category)
+public class JLNavigationBar extends PageObject {
+    public static String category(String category)
     {
-        return Target.the(category.name() + " category")
-                .locatedBy("//li[@class=\"jl-has-submenu\"]//span[contains(text(),'{0}')]")
-                .of(category.name());
-        /*return Target.the(category.name() + " category")
-                .located(By.cssSelector("#{0}Menu"));*/
+        category = "a[id=" + category + "Menu]";
+        return category;
     }
-    public static Target subCategory(SubCategory subCategory)
+
+    public static String subCategory(String subCategory)
     {
-        String subCategoryName = subCategory.getName();
-        return Target.the(subCategory + " sub-category")
-                .locatedBy("//ul[@class='jl-submenu menu-open']//a[contains(text(),'#subCategoryName')]")
-                .of(subCategory.name());
+        subCategory = "a[id=" + subCategory + "Menu]";
+        return subCategory;
     }
 }

@@ -3,14 +3,9 @@ package net.serenitybdd.screenplay.webtests.integration;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
-import net.serenitybdd.screenplay.abilities.BrowsingTheWeb;
 import net.serenitybdd.screenplay.webtests.actions.NavigateToPage;
 import net.serenitybdd.screenplay.webtests.model.Category;
 import net.serenitybdd.screenplay.webtests.model.SubCategory;
-import net.serenitybdd.screenplay.webtests.pages.JLHomePage;
-
-import net.serenitybdd.screenplay.webtests.pages.JLSitesAddSitePage;
-import net.serenitybdd.screenplay.webtests.tasks.JLAddNewSite;
 import net.serenitybdd.screenplay.webtests.tasks.JLLoginWebApp;
 import net.serenitybdd.screenplay.webtests.tasks.JLOpenWebApp;
 import net.thucydides.core.annotations.Managed;
@@ -19,16 +14,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.Wait;
-
-import java.time.Duration;
-import java.util.NoSuchElementException;
-import java.util.concurrent.TimeUnit;
-
 import static net.serenitybdd.screenplay.GivenWhenThen.*;
-import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isCurrentlyVisible;
-import static net.serenitybdd.screenplay.questions.WebElementQuestion.the;
+
 
 @RunWith(SerenityRunner.class)
 public class JLWhenDanaAddNewSite {
@@ -46,15 +33,8 @@ public class JLWhenDanaAddNewSite {
 
     @Test
     public void addNewSite(){
-        //BrowsingTheWeb.as(dana).onPage(JLHomePage.class).navigateToPage("AddSite");
-       /* Wait<WebDriver> wait = new FluentWait<WebDriver>(browser)
-                .withTimeout(Duration.ofSeconds(30))
-                .pollingEvery(Duration.ofSeconds(3))
-                .ignoring(NoSuchElementException.class);*/
-      //  System.out.print(Category.site + " " + SubCategory.ADDSITE);
-        //givenThat(dana).wasAbleTo(NavigateToPage.withMenu(Category.Sites).selectItem(SubCategory.ADDSITE));
-        //BrowsingTheWeb.as(dana).onPage(JLHomePage.class).navigateToPage("AddSite");
-      givenThat(dana).wasAbleTo(NavigateToPage.withMenu(Category.Sites).selectItem(SubCategory.ADDSITE));
+        givenThat(dana).wasAbleTo(NavigateToPage.withMenu(Category.SITES.getName()).selectItem(SubCategory.ADDSITE.getName()));
+
       /*  dana.should(
                 seeThat(the(JLSitesAddSitePage.DDCUSTOMER),isCurrentlyVisible()),
                 seeThat(the(JLSitesAddSitePage.TXTSITE),isCurrentlyVisible())
@@ -63,7 +43,6 @@ public class JLWhenDanaAddNewSite {
        /* when(dana).attemptsTo(JLAddNewSite
                 .withCustomer("Candy Crush")
                 .withSite("TESTSITE091420"));*/
-
     }
 
     @Steps

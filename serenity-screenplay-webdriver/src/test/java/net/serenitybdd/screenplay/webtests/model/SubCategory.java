@@ -2,7 +2,7 @@ package net.serenitybdd.screenplay.webtests.model;
 
 public enum SubCategory {
     ADDCUSTOMER("Add Customer"),
-    ADDSITE("Add Site");
+    ADDSITE("createSite");
 
     private String name;
 
